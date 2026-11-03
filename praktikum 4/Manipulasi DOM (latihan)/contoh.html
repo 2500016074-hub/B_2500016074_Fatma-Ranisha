@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Kegiatan</title>
+    <link rel="stylesheet" href="DOM.css">
+</head>
+<body>
+    <main class="container">
+        <header class="page-header">
+            <p class="date-label">HARI INI</p>
+            <h1>Daftar kegiatan</h1>
+            <p class="subtitle">Catat hal kecil yang ingin kamu selesaikan.</p>
+        </header>
+
+        <form id="activity-form" class="activity-form">
+            <label class="sr-only" for="activity-input">Kegiatan baru</label>
+            <input id="activity-input" type="text" placeholder="Contoh: Baca materi kuliah" maxlength="100" required>
+            <button type="submit">Tambah</button>
+        </form>
+
+        <div class="list-heading">
+            <h2>Kegiatanmu</h2>
+            <span id="activity-count" aria-live="polite">0 kegiatan</span>
+        </div>
+
+        <ul id="activity-list" class="activity-list" aria-label="Daftar kegiatan">
+            <li id="empty-state" class="empty-state">Belum ada kegiatan. Tambahkan satu di atas.</li>
+        </ul>
+    </main>
+
+    <script src="interactive.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Event Handling</title>
+    <link rel="stylesheet" href="event.css">
+</head>
+<body>
+    <main class="page">
+        <section class="demo" aria-label="Tombol klik">
+            <p class="hint">Tombol sudah diklik <span id="click-result" aria-live="polite">0</span> kali.</p>
+            <button id="click-button" type="button">Klik saya</button>
+        </section>
+
+        <section class="demo" aria-label="Input nama">
+            <label for="name-input">Masukkan nama:</label>
+            <input id="name-input" type="text" placeholder="Ketik nama di sini" autocomplete="given-name">
+            <p id="name-result" class="hint" aria-live="polite">Sapaanmu akan muncul di sini.</p>
+
+            <label for="email-input">Masukkan email:</label>
+            <input id="email-input" type="email" placeholder="nama@email.com" autocomplete="email">
+            <p id="email-result" class="hint" aria-live="polite">Email akan muncul di sini.</p>
+        </section>
+    </main>
+
+    <script>
+        const clickButton = document.getElementById("click-button");
+        const clickResult = document.getElementById("click-result");
+        const nameInput = document.getElementById("name-input");
+        const nameResult = document.getElementById("name-result");
+        const emailInput = document.getElementById("email-input");
+        const emailResult = document.getElementById("email-result");
+        let clickCount = 0;
+
+        clickButton.addEventListener("click", () => {
+            clickCount += 1;
+            clickResult.textContent = clickCount;
+        });
+
+        nameInput.addEventListener("input", () => {
+            const name = nameInput.value.trim();
+            nameResult.textContent = name
+                ? `Halo, ${name}!`
+                : "Sapaanmu akan muncul di sini.";
+        });
+
+        emailInput.addEventListener("input", () => {
+            const email = emailInput.value.trim();
+            emailResult.textContent = email
+                ? `Email kamu: ${email}`
+                : "Email akan muncul di sini.";
+        });
+    </script>
+</body>
+</html>

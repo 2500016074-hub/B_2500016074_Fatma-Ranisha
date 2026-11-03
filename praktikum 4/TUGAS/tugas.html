@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="calculator">
+        <header class="calculator-header">
+            <span class="calculator-icon" aria-hidden="true">÷</span>
+            <h1>Kalkulator</h1>
+        </header>
+
+        <div class="inputs">
+            <div class="input-group">
+                <label for="angka1">Angka pertama</label>
+                <input type="number" id="angka1" placeholder="0">
+            </div>
+            <div class="input-group">
+                <label for="angka2">Angka kedua</label>
+                <input type="number" id="angka2" placeholder="0">
+            </div>
+        </div>
+
+        <div class="operations" aria-label="Operasi hitung">
+            <button type="button" onclick="hitung('+')" aria-label="Tambah">+</button>
+            <button type="button" onclick="hitung('-')" aria-label="Kurang">−</button>
+            <button type="button" onclick="hitung('*')" aria-label="Kali">×</button>
+            <button type="button" onclick="hitung('/')" aria-label="Bagi">÷</button>
+        </div>
+
+        <div class="result">
+            <span class="result-label">HASIL</span>
+            <output id="hasil" aria-live="polite">-</output>
+        </div>
+    </main>
+
+    <script>
+        function hitung(operator) {
+            const angka1 = document.getElementById("angka1").value;
+            const angka2 = document.getElementById("angka2").value;
+            const hasil = document.getElementById("hasil");
+
+            if (angka1 === "" || angka2 === "") {
+                hasil.textContent = "Masukkan kedua angka";
+                return;
+            }
+
+            const nilai1 = Number(angka1);
+            const nilai2 = Number(angka2);
+            let perhitungan;
+
+            switch (operator) {
+                case "+":
+                    perhitungan = nilai1 + nilai2;
+                    break;
+                case "-":
+                    perhitungan = nilai1 - nilai2;
+                    break;
+                case "*":
+                    perhitungan = nilai1 * nilai2;
+                    break;
+                case "/":
+                    if (nilai2 === 0) {
+                        hasil.textContent = "Tidak bisa dibagi 0";
+                        return;
+                    }
+                    perhitungan = nilai1 / nilai2;
+                    break;
+                default:
+                    return;
+            }
+
+            hasil.textContent = perhitungan;
+        }
+    </script>
+</body>
+</html>
